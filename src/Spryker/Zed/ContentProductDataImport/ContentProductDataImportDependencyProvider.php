@@ -49,11 +49,6 @@ class ContentProductDataImportDependencyProvider extends DataImportDependencyPro
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUtilEncodingService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
@@ -65,11 +60,6 @@ class ContentProductDataImportDependencyProvider extends DataImportDependencyPro
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addContentProductFacade(Container $container): Container
     {
         $container->set(static::FACADE_CONTENT_PRODUCT, function (Container $container) {
@@ -81,11 +71,6 @@ class ContentProductDataImportDependencyProvider extends DataImportDependencyPro
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addContentFacade(Container $container): Container
     {
         $container->set(static::FACADE_CONTENT, function (Container $container) {

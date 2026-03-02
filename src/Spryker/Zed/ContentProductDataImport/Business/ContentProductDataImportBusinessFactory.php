@@ -46,25 +46,16 @@ class ContentProductDataImportBusinessFactory extends DataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createContentProductAbstractListCheckContentDataStep(): DataImportStepInterface
     {
         return new ContentProductAbstractListCheckContentDataStep($this->getContentFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createContentProductAbstractListSkusToIdsStep(): DataImportStepInterface
     {
         return new ContentProductAbstractListSkusToIdsStep();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createContentProductAbstractListPrepareLocalizedTermsStep(): DataImportStepInterface
     {
         return new ContentProductAbstractListPrepareLocalizedTermsStep(
@@ -73,33 +64,21 @@ class ContentProductDataImportBusinessFactory extends DataImportBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createContentProductAbstractListWriterStep(): DataImportStepInterface
     {
         return new ContentProductAbstractListWriterStep();
     }
 
-    /**
-     * @return \Spryker\Zed\ContentProductDataImport\Dependency\Service\ContentProductDataImportToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): ContentProductDataImportToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(ContentProductDataImportDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 
-    /**
-     * @return \Spryker\Zed\ContentProductDataImport\Dependency\Facade\ContentProductDataImportToContentProductFacadeInterface
-     */
     public function getContentProductFacade(): ContentProductDataImportToContentProductFacadeInterface
     {
         return $this->getProvidedDependency(ContentProductDataImportDependencyProvider::FACADE_CONTENT_PRODUCT);
     }
 
-    /**
-     * @return \Spryker\Zed\ContentProductDataImport\Dependency\Facade\ContentProductDataImportToContentInterface
-     */
     public function getContentFacade(): ContentProductDataImportToContentInterface
     {
         return $this->getProvidedDependency(ContentProductDataImportDependencyProvider::FACADE_CONTENT);

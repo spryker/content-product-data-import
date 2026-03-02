@@ -22,9 +22,6 @@ class ContentProductAbstractListCheckContentDataStep implements DataImportStepIn
      */
     protected $contentFacade;
 
-    /**
-     * @param \Spryker\Zed\ContentProductDataImport\Dependency\Facade\ContentProductDataImportToContentInterface $contentFacade
-     */
     public function __construct(ContentProductDataImportToContentInterface $contentFacade)
     {
         $this->contentFacade = $contentFacade;
@@ -54,11 +51,6 @@ class ContentProductAbstractListCheckContentDataStep implements DataImportStepIn
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ContentValidationResponseTransfer $contentValidationResponseTransfer
-     *
-     * @return array
-     */
     protected function getErrorMessages(ContentValidationResponseTransfer $contentValidationResponseTransfer): array
     {
         $messages = [];

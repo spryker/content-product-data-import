@@ -48,9 +48,6 @@ class ContentProductDataImportPluginTest extends Unit
      */
     protected static $productAbstractSkuIds = [];
 
-    /**
-     * @return void
-     */
     protected function _before(): void
     {
         parent::_before();
@@ -58,9 +55,6 @@ class ContentProductDataImportPluginTest extends Unit
         $this->addNeededProductAbstract();
     }
 
-    /**
-     * @return void
-     */
     protected function addNeededProductAbstract(): void
     {
         $skus = [
@@ -82,9 +76,6 @@ class ContentProductDataImportPluginTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testImportProductAbstractListsData(): void
     {
         // Assign
@@ -103,9 +94,6 @@ class ContentProductDataImportPluginTest extends Unit
         $this->tester->assertDatabaseTableContainsData('apl3');
     }
 
-    /**
-     * @return void
-     */
     public function testImportProductAbstractListsDataWrongSkus(): void
     {
         // Assign
@@ -120,9 +108,6 @@ class ContentProductDataImportPluginTest extends Unit
         (new ContentProductAbstractListDataImportPlugin())->import($dataImportConfigurationTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGetImportTypeReturnsTypeOfImporter(): void
     {
         // Arrange
@@ -132,9 +117,6 @@ class ContentProductDataImportPluginTest extends Unit
         $this->assertSame(ContentProductDataImportConfig::IMPORT_TYPE_CONTENT_PRODUCT, $contentProductAbstractListDataImportPlugin->getImportType());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLocale(): void
     {
         // Assign
@@ -166,9 +148,6 @@ class ContentProductDataImportPluginTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLocaleFromDefault(): void
     {
         // Assign
@@ -200,9 +179,6 @@ class ContentProductDataImportPluginTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLocaleToDefault(): void
     {
         // Assign
@@ -230,11 +206,6 @@ class ContentProductDataImportPluginTest extends Unit
         $this->tester->assertContentLocalizedDoesNotExist($deLocaleTransfer->getIdLocale());
     }
 
-    /**
-     * @param string $importFilePath
-     *
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
     protected function createConfigurationTransfer(string $importFilePath): DataImporterConfigurationTransfer
     {
         $dataImporterReaderConfigurationTransfer = new DataImporterReaderConfigurationTransfer();
@@ -245,17 +216,11 @@ class ContentProductDataImportPluginTest extends Unit
         return $dataImportConfigurationTransfer->setReaderConfiguration($dataImporterReaderConfigurationTransfer);
     }
 
-    /**
-     * @return \Spryker\Service\UtilEncoding\UtilEncodingService
-     */
     protected function createUtilEncodingService(): UtilEncodingService
     {
         return new UtilEncodingService();
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
-     */
     protected function getLocaleFacade(): LocaleFacadeInterface
     {
         return $this->getLocator()->locale()->facade();

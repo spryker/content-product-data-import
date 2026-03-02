@@ -42,11 +42,6 @@ class ContentProductAbstractListSkusToIdsStep implements DataImportStepInterface
      */
     protected $cachedProductAbstractSkusToIds = [];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->assureDefaultSkusExists($dataSet);
@@ -65,11 +60,6 @@ class ContentProductAbstractListSkusToIdsStep implements DataImportStepInterface
         }
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     protected function assureDefaultSkusExists(DataSetInterface $dataSet): void
     {
         if (
@@ -84,12 +74,6 @@ class ContentProductAbstractListSkusToIdsStep implements DataImportStepInterface
         }
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param string $skusLocaleKey
-     *
-     * @return array
-     */
     protected function getProductAbstractIds(DataSetInterface $dataSet, string $skusLocaleKey): array
     {
         $productAbstractSkus = array_unique(explode(',', $dataSet[$skusLocaleKey]));

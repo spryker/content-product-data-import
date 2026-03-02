@@ -46,10 +46,6 @@ class ContentProductAbstractListPrepareLocalizedTermsStep implements DataImportS
      */
     protected $contentProductFacade;
 
-    /**
-     * @param \Spryker\Zed\ContentProductDataImport\Dependency\Service\ContentProductDataImportToUtilEncodingServiceInterface $utilEncodingService
-     * @param \Spryker\Zed\ContentProductDataImport\Dependency\Facade\ContentProductDataImportToContentProductFacadeInterface $contentProductFacade
-     */
     public function __construct(
         ContentProductDataImportToUtilEncodingServiceInterface $utilEncodingService,
         ContentProductDataImportToContentProductFacadeInterface $contentProductFacade
@@ -58,11 +54,6 @@ class ContentProductAbstractListPrepareLocalizedTermsStep implements DataImportS
         $this->contentProductFacade = $contentProductFacade;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $localizedProductAbstractListTermParameters = [];
@@ -109,11 +100,6 @@ class ContentProductAbstractListPrepareLocalizedTermsStep implements DataImportS
         throw new InvalidDataException($errorMessage);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ContentValidationResponseTransfer $contentValidationResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\MessageTransfer
-     */
     protected function getMessageTransfer(ContentValidationResponseTransfer $contentValidationResponseTransfer): MessageTransfer
     {
         return $contentValidationResponseTransfer->getParameterMessages()
@@ -122,21 +108,11 @@ class ContentProductAbstractListPrepareLocalizedTermsStep implements DataImportS
             ->offsetGet(0);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ContentProductAbstractListTermTransfer $contentProductAbstractListTermTransfer
-     *
-     * @return string|null
-     */
     protected function getEncodedParameters(ContentProductAbstractListTermTransfer $contentProductAbstractListTermTransfer): ?string
     {
         return $this->utilEncodingService->encodeJson($contentProductAbstractListTermTransfer->toArray());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MessageTransfer $messageTransfer
-     *
-     * @return string
-     */
     protected function getMessage(MessageTransfer $messageTransfer): string
     {
         return sprintf('%s %s', $messageTransfer->getValue(), static::ERROR_MESSAGE_SUFFIX);

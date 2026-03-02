@@ -18,9 +18,6 @@ class ContentProductDataImportHelper extends Module
      */
     protected const FIELD_ID_PRODUCT_ABSTRACTS = 'id_product_abstracts';
 
-    /**
-     * @return void
-     */
     public function ensureDatabaseTableIsEmpty(): void
     {
         $contentLocalizedQuery = $this->getContentLocalizedQuery();
@@ -30,12 +27,6 @@ class ContentProductDataImportHelper extends Module
         $contentQuery->deleteAll();
     }
 
-    /**
-     * @param int $locale
-     * @param string $products
-     *
-     * @return void
-     */
     public function assertContentLocalizedHasProducts(int $locale, string $products): void
     {
         $contentLocalized = $this->getContentLocalizedQuery()->findOneByFkLocale($locale);
@@ -43,11 +34,6 @@ class ContentProductDataImportHelper extends Module
         $this->assertStringContainsString($products, $contentLocalized->getParameters());
     }
 
-    /**
-     * @param int $locale
-     *
-     * @return void
-     */
     public function assertContentLocalizedDoesNotExist(int $locale): void
     {
         $contentLocalized = $this->getContentLocalizedQuery()->findOneByFkLocale($locale);
@@ -55,11 +41,6 @@ class ContentProductDataImportHelper extends Module
         $this->assertNull($contentLocalized);
     }
 
-    /**
-     * @param string|null $keyContent
-     *
-     * @return void
-     */
     public function assertDatabaseTableContainsData(?string $keyContent = null): void
     {
         $contentQuery = $this->getContentQuery();
@@ -74,17 +55,11 @@ class ContentProductDataImportHelper extends Module
         $this->assertTrue(($contentLocalizedQuery->count() > 0), 'Expected at least one entry in the database spy_content_localized table but database table is empty.');
     }
 
-    /**
-     * @return \Orm\Zed\Content\Persistence\SpyContentQuery
-     */
     protected function getContentQuery(): SpyContentQuery
     {
         return SpyContentQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Content\Persistence\SpyContentLocalizedQuery
-     */
     protected function getContentLocalizedQuery(): SpyContentLocalizedQuery
     {
         return SpyContentLocalizedQuery::create();

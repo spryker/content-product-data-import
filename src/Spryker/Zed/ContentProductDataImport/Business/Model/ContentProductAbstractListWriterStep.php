@@ -33,11 +33,6 @@ class ContentProductAbstractListWriterStep extends PublishAwareStep implements D
      */
     protected const CONTENT_TERM_PRODUCT_ABSTRACT_LIST = 'Abstract Product List';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $contentProductAbstractListEntity = $this->saveContentProductAbstractListEntity($dataSet);
@@ -65,11 +60,6 @@ class ContentProductAbstractListWriterStep extends PublishAwareStep implements D
         );
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\Content\Persistence\SpyContent
-     */
     protected function saveContentProductAbstractListEntity(DataSetInterface $dataSet): SpyContent
     {
         $contentProductAbstractListEntity = SpyContentQuery::create()
